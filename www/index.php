@@ -2,6 +2,10 @@
 
 require __DIR__ . '/models/news.php';
 
+$news = News_getAll();
+
+require __DIR__ . '/view/index.php';
+
 
 /*ДОМАШНЕЕ ЗАДАНИЕ
     1. Установите Git. Проверьте его работоспособность в консоли
