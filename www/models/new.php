@@ -1,7 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Диана
- * Date: 18.02.15
- * Time: 16:36
- */ 
+    require __DIR__ . '/../functions/sql.php';
+
+    function New_setNew($id)
+    {
+        $query = "SELECT * FROM news WHERE id='" . $id . "'";
+        $newArr = sql_query($query);
+
+        return $newArr;
+    }
