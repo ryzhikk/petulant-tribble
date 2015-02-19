@@ -3,6 +3,8 @@
 require __DIR__ . '/models/news.php';
 
 $news = News_getAll();
+$add = $_COOKIE['add'];
+setcookie('add', '', time()-3600);
 
 require __DIR__ . '/view/index.php';
 

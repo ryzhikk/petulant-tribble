@@ -17,3 +17,9 @@ function sql_query($query)
 
     return $ret;
 }
+
+function sql_downloader($query)
+{
+    sql_connect();
+    return mysql_query($query);
+}

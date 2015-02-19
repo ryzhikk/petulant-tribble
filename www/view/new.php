@@ -7,7 +7,11 @@
 </head>
 <body>
     <h1><?php echo $new[0]['name']; ?></h1>
-    <p><?php echo $new[0]['content']; ?></p>
+    <p>
+        <?php echo $new[0]['content']; ?>
+        <br>
+        Дата добавления: <?php echo $new[0]['time']; ?>
+    </p>
     <a href="/index.php">Назад</a>
 
 </body>
