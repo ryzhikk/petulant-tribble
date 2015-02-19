@@ -16,9 +16,9 @@
     </form>
     <?php
         foreach($news as $new){ ?>
-            <a href="/new.php/?id=<?php echo $new['id']; ?>"><h3><?php echo $new['name']; ?></h3></a>
+            <a href="/new.php/?id=<?php echo $new['id']; ?>"><h3><?php echo htmlspecialchars_decode($new['name'], ENT_QUOTES); ?></h3></a>
             <p>
-                <?php echo $new['content']; ?>
+                <?php echo htmlspecialchars_decode($new['content'], ENT_QUOTES); ?>
                 <br>
                 Дата добавления: <?php echo $new['time']; ?>
             </p>

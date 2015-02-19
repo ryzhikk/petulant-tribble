@@ -18,7 +18,7 @@ function sql_query($query)
     return $ret;
 }
 
-function sql_downloader($query)
+function sql_uploader($query)
 {
     sql_connect();
     return mysql_query($query);
