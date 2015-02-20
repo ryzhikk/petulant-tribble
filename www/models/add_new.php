@@ -1,5 +1,5 @@
 <?php
-    
+
     require __DIR__ . '/../functions/sql.php';
 
     $add_name = htmlspecialchars($_POST['name'], ENT_QUOTES);
