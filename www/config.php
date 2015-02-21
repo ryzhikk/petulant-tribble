@@ -4,5 +4,6 @@ $arrConfig = [
     'hostName' => 'test',
     'mysqlLogin' => 'root',
     'mysqlPass' => '',
-    'dbName' => 'commom_database'
+    'dbName' => 'commom_database',
+    'table_news' => 'news'
 ];

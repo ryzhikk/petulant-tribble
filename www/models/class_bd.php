@@ -8,6 +8,7 @@ class C_config {
     public $mysqlLogin;
     public $mysqlPass;
     public $dbName;
+    public $table_news;
 
     public function  __construct() {
         require __DIR__ . '/../config.php';
@@ -15,6 +16,7 @@ class C_config {
         $this->mysqlLogin = $arrConfig['mysqlLogin'];
         $this->mysqlPass = $arrConfig['mysqlPass'];
         $this->dbName = $arrConfig['dbName'];
+        $this->table_news = $arrConfig['table_news'];
     }
 }
 
@@ -43,12 +45,12 @@ class Sql_query {
         return $ret;
     }
 
-    public function Add_new($name, $content) {
-        return mysql_query("INSERT INTO news (name, content) VALUES ('" . $name . "', '" . $content . "')");
+    public function Add_new($table, $name, $content) {
+        return mysql_query("INSERT INTO " . $table . " (name, content) VALUES ('" . $name . "', '" . $content . "')");
     }
 
-    public function Update_news($id, $name, $content) {
-        return mysql_query("UPDATE news SET name='" . $name . "', content='" . $content . "' WHERE id='" . $id . "'");
+    public function Update_news($table, $id, $name, $content) {
+        return mysql_query("UPDATE " / $table ." SET name='" . $name . "', content='" . $content . "' WHERE id='" . $id . "'");
     }
 
 }
