@@ -6,7 +6,7 @@ if (!empty ($_GET['id'])) {
     ###$idNew = $_GET['id'];
     ###$new = New_setNew($idNew);
 
-    $new = $setNews->Get_one_news('news', $new->id);
+    ###$new = $setNews->Get_one_news('news', $new->id);
 
     require __DIR__ . '/view/new.php';
 }

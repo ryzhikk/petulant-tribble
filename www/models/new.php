@@ -12,9 +12,7 @@
 
 
     require __DIR__ . '/class_news.php';
-    require __DIR__ . '/class_bd.php';
 
-    $new = new News();
-    $new->id = $_GET['id'];
-
-    $setNews = new Sql_query();
+    $get_new = new News();
+    $get_new->id = $_GET['id'];
+    $new = $get_new->Get_one_article();

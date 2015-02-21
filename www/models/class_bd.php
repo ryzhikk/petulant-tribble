@@ -35,7 +35,7 @@ class Sql_query {
         return $ret;
     }
 
-    public function Get_one_news($table, $id) {
+    public function Get_one_line($table, $id) {
         $res = mysql_query("SELECT * FROM " . $table . " WHERE id='" . $id . "'");
         while (false !== $row = mysql_fetch_assoc($res)) {
             $ret[] = $row;
