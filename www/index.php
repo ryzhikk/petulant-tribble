@@ -2,7 +2,6 @@
 
 require __DIR__ . '/models/news.php';
 
-#$news = News_getAll(); Старый код
 $add = $_COOKIE['add'];
 setcookie('add', '', time()-3600);
 
