@@ -28,7 +28,9 @@ class News extends Article {
     }
 
     public function Update_article() {
-
+        $update_name = htmlspecialchars($_POST['name'], ENT_QUOTES);
+        $update_content = htmlspecialchars($_POST['content'], ENT_QUOTES);
+        return $this->sql_object->Update_news($this->sql_table, $this->id, $update_name, $update_content);
     }
 
 }

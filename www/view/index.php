@@ -16,7 +16,7 @@
     </form>
     <?php
         foreach($news as $new){ ?>
-            <a href="/new.php/?id=<?php echo $new['id']; ?>"><h3><?php echo htmlspecialchars_decode($new['name'], ENT_QUOTES); ?></h3></a>
+            <a href="/new.php/?id=<?php echo $new['id']; ?>"><strong><?php echo htmlspecialchars_decode($new['name'], ENT_QUOTES); ?></strong></a>
             <p>
                 <?php echo htmlspecialchars_decode($new['content'], ENT_QUOTES); ?>
                 <br>

@@ -50,6 +50,7 @@ class Sql_query {
     }
 
     public function Update_news($table, $id, $name, $content) {
+
         return mysql_query("UPDATE " / $table ." SET name='" . $name . "', content='" . $content . "' WHERE id='" . $id . "'");
     }
 

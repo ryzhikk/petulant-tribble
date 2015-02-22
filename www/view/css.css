@@ -1,0 +1,10 @@
+fieldset {
+
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid seagreen;
+}
+
+legend {
+    color: seagreen;
+}

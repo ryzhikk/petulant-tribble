@@ -12,6 +12,8 @@
         <br>
         Дата добавления: <?php echo $new[0]['time']; ?>
     </p>
+    <a href="/edit_news.php?id=<?php echo $_GET['id']?>">Редактировать новость</a>
+    <br>
     <a href="/index.php">Назад</a>
 
 </body>
