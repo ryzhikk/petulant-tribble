@@ -16,11 +16,13 @@
     </form>
     <?php
         foreach($news as $new){ ?>
-            <a href="/new.php/?id=<?php echo $new['id']; ?>"><strong><?php echo htmlspecialchars_decode($new['name'], ENT_QUOTES); ?></strong></a>
+            <a href="/new.php/?id=<?php echo $new->id; ?>">
+                <strong><?php echo htmlspecialchars_decode($new->name, ENT_QUOTES); ?></strong>
+            </a>
             <p>
-                <?php echo htmlspecialchars_decode($new['content'], ENT_QUOTES); ?>
+                <?php echo htmlspecialchars_decode($new->content, ENT_QUOTES); ?>
                 <br>
-                Дата добавления: <?php echo $new['time']; ?>
+                Дата добавления: <?php echo $new->time; ?>
             </p>
 
     <?php

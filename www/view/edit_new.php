@@ -3,7 +3,7 @@
 <head>
     <title>Новости</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="/www/view/css.css">
+    <link rel="stylesheet" type="text/css" href="/view/css.css">
 </head>
 <body>
     <fieldset>
@@ -19,8 +19,10 @@
                 Содержание новости
                 <br>
                 <textarea name="content"></textarea>
+                <input type="submit" name="send" value="Редактировать">
             </label>
         </form>
+        <a href="/new.php?id=<?php echo $_GET['id'] ?>">Назад</a>
     </fieldset>
 
 </body>

@@ -1,8 +1,12 @@
 <?php
-    require __DIR__ . '/class_news.php';
+    require __DIR__ . '/News.php';
     $upload_news = new News();
 
-    if ($upload_news->Add_new_article()) {
+    if (News::AddNewArticle()) {
         setcookie('add', 'new', time()+3600);
         header ('Location: /index.php');
+    }
+
+    else {
+        echo 'Ошибка!';
     }

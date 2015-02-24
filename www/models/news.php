@@ -1,6 +1,5 @@
 <?php
 
-require __DIR__ . '/class_news.php';
+require __DIR__ . '/../classes/News.php';
 
-$get_list_news = new News();
-$news = $get_list_news->Get_all_article();
+$news = News::GetAllArticle();
