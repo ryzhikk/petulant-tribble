@@ -6,7 +6,6 @@ abstract class AbstractArticle {
     public $content;
     public $id;
     public $time;
-    protected static $sql_object;
     protected static $sql_table;
     protected static  $class;
 

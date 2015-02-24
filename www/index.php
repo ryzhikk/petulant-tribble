@@ -4,8 +4,14 @@ require_once __DIR__ . '/autoload.php';
 $add = $_COOKIE['add'];
 setcookie('add', '', time()-3600);
 
-require __DIR__ . '/models/news.php';
-require __DIR__ . '/view/index.php';
+    $ctrl = isset($_GET['ctrl']) ? $_GET['ctrl'] : 'News';
+    $act = isset($_GET['act']) ? $_GET['act'] : 'All';
+
+    $controllerClassName = $ctrl . 'Controller';
+    $controller = new $controllerClassName;
+
+    $method = 'action' . $act;
+    $controller->$method();
 
 
 /*
@@ -23,11 +29,11 @@ require __DIR__ . '/view/index.php';
 одной выбранной новости и AdminController для управления новостями (достаточно
 пока реализовать добавление новости в базу)
 
-4. Подумайте, как можно применить объектно-ориентированный подход во view? Например
+4. Подумайте, как можно применить объектно-ориентированный подход во views? Например
 так:
-$view = new View(); // создали объект
-$view->data('news', $items); // передали данные для показа
-$view->display('allnews.php'); // дали команду на показ шаблона с указанными ранее
+$views = new View(); // создали объект
+$views->data('news', $items); // передали данные для показа
+$views->display('allnews.php'); // дали команду на показ шаблона с указанными ранее
 данными
 
 5* Самостоятельно изучите вопрос - как превратить адреса вида ?ctrl=News&act=All

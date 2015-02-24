@@ -5,6 +5,5 @@ class News extends AbstractArticle {
 
     protected static $class = 'News';
     protected static $sql_table = 'news';
-    protected static  $sql_object;
 
 }

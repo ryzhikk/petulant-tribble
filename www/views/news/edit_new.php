@@ -3,7 +3,7 @@
 <head>
     <title>Новости</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="/view/css.css">
+    <link rel="stylesheet" type="text/css" href="/views/css.css">
 </head>
 <body>
     <fieldset>

@@ -23,7 +23,7 @@ class SqlQuery {
         while (false !== $row = mysql_fetch_object($res, $class)) {
             $ret[] = $row;
         }
-        return $ret;
+        return $ret[0];
     }
 
     public function AddNew($table, $name, $content) {
