@@ -11,11 +11,12 @@
     <p>Новость успешно добавлена!</p>
     <?php } ?>
     <h1>Новости</h1>
-    <form action="index.php?act=New" method="post">
+    <form action="/index.php?act=Add&&ctrl=Admin" method="post">
         <input type="submit" name="addNew" value="Добавить новость">
     </form>
     <?php
-        foreach($news as $new){ ?>
+        #var_dump($news); die;
+        foreach($this->data as $new){ ?>
             <a href="/index.php/?id=<?php echo $new->id; ?>&&act=One">
                 <strong><?php echo htmlspecialchars_decode($new->name, ENT_QUOTES); ?></strong>
             </a>
