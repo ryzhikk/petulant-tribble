@@ -8,7 +8,7 @@ setcookie('add', '', time()-3600);
     $act = isset($_GET['act']) ? $_GET['act'] : 'All';
 
     $controllerClassName = $ctrl . 'Controller';
-    $controller = new $controllerClassName;
+    $controller = new $controllerClassName($act);
 
     $method = 'action' . $act;
     $controller->$method();
