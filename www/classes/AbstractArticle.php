@@ -1,7 +1,8 @@
 <?php
 require __DIR__ . '/SqlQuery.php';
 
-abstract class AbstractArticle {
+abstract class AbstractArticle
+{
     public $name;
     public $content;
     public $id;
