@@ -17,7 +17,8 @@ class NewsController
         $news = News::GetAllArticle();
 
         $view = new View();
-        $view->data($news);
+        $view->assign('news', $news);
+        $view->items = $news;
         $view->display(News::$sql_table, $this->act);
     }
 
@@ -32,7 +33,7 @@ class NewsController
 
 
         $view = new View();
-        $view->data($news);
+        $view->assign('news', $news);
         $view->display(News::$sql_table, $this->act);
         }
 

@@ -16,7 +16,7 @@
     </form>
     <?php
         #var_dump($news); die;
-        foreach($this->data as $new){ ?>
+        foreach($news as $new){ ?>
             <a href="/index.php/?id=<?php echo $new->id; ?>&&act=One">
                 <strong><?php echo htmlspecialchars_decode($new->name, ENT_QUOTES); ?></strong>
             </a>

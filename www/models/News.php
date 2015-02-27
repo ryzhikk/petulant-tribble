@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/AbstractArticle.php';
+require __DIR__ . '/../classes/AbstractArticle.php';
 
 class News extends AbstractArticle {
 

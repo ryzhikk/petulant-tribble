@@ -5,14 +5,23 @@ class View
     public $data;
     public $address;
 
-    public function data($item)
+    public function assign($name, $value)
     {
-        $this->data = $item;
+        $this->data[$name] = $value;
 
+    }
+
+    public function __set($name, $val)
+    {
+        $this->data[$name] = $val;
     }
 
     public function display($section, $act)
     {
+        foreach ($this->data as $key => $value)
+        {
+            $$key = $value;
+        }
         $this->address = __DIR__ . '/../views/' . $section . '/' . $act . '.php';
         require $this->address;
     }
