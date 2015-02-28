@@ -30,9 +30,9 @@ class SqlQuery {
         return mysql_query("INSERT INTO " . $table . " (name, content) VALUES ('" . $name . "', '" . $content . "')");
     }
 
-    public function UpdateOne($table, $id, $name, $content) {
+    public function EditOne($table, $id, $name, $content) {
 
-        return mysql_query("UPDATE " / $table ." SET name='" . $name . "', content='" . $content . "' WHERE id='" . $id . "'");
+        return mysql_query("UPDATE " . $table . " SET name='" . $name . "', content='" . $content . "' WHERE id='" . $id . "'");
     }
 
 }

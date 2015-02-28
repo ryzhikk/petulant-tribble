@@ -27,13 +27,15 @@ class NewsController
         if (!empty ($_GET['id']))
         {
 
-        $get_new = new News();
-        $get_new->id = $_GET['id'];
-        $news = $get_new->GetOneArticle();
+        $getOne = new News();
+        $getOne->id = $_GET['id'];
+        $news = $getOne->GetOneArticle();
+        #var_dump($news); die;
 
 
         $view = new View();
         $view->assign('news', $news);
+        $view->items = $news;
         $view->display(News::$sql_table, $this->act);
         }
 

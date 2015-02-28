@@ -4,6 +4,10 @@ require_once __DIR__ . '/autoload.php';
 $add = $_COOKIE['add'];
 setcookie('add', '', time()-3600);
 
+$edit = $_COOKIE['edit'];
+    #var_dump($edit); die;
+setcookie('edit', '', time()-3600);
+
     $ctrl = isset($_GET['ctrl']) ? $_GET['ctrl'] : 'News';
     $act = isset($_GET['act']) ? $_GET['act'] : 'All';
 

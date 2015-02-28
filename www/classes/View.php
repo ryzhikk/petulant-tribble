@@ -18,9 +18,12 @@ class View
 
     public function display($section, $act)
     {
-        foreach ($this->data as $key => $value)
+        if($this->data)
         {
-            $$key = $value;
+            foreach ($this->data as $key => $value)
+            {
+                $$key = $value;
+            }
         }
         $this->address = __DIR__ . '/../views/' . $section . '/' . $act . '.php';
         require $this->address;

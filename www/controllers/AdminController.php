@@ -16,10 +16,9 @@
 
             if (!empty ($_POST['send_new'])) {
 
-                $upload_news = new News();
 
                 if (News::AddNewArticle()) {
-                    setcookie('add', 'new', time()+3600);
+                    setcookie('add', 'news', time()+3600);
                     header ('Location: /index.php');
                 }
 
@@ -35,8 +34,21 @@
 
         public function actionEdit()
         {
-            $view = new View();
-            $view->display(News::$sql_table, $this->act);
+            if (!empty ($_POST['edit']))
+            {
+                $editOne = new News();
+                $editOne->id = $_GET['id'];
+                if ($editOne->EditArticle())
+                {
+                    setcookie('edit', 'news', time()+3600);
+                    header ('Location: /index.php');
+                }
+            }
+            if (!empty ($_GET['id']))
+            {
+                $showOne = new NewsController($this->act);
+                $showOne->actionOne();
 
+            }
         }
     }

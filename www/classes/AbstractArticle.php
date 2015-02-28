@@ -26,11 +26,11 @@ abstract class AbstractArticle
         $add_content = htmlspecialchars($_POST['content'], ENT_QUOTES);
         return $query->AddNew(static::$sql_table, $add_name, $add_content);
     }
-    public function UpdateArticle()
+    public function EditArticle()
     {
         $query = new SqlQuery();
         $update_name = htmlspecialchars($_POST['name'], ENT_QUOTES);
         $update_content = htmlspecialchars($_POST['content'], ENT_QUOTES);
-        return $query->UpdateOne (static::$sql_table, $this->id, $update_name, $update_content);
+        return $query->EditOne (static::$sql_table, $this->id, $update_name, $update_content);
     }
 }

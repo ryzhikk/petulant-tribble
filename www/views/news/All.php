@@ -7,9 +7,12 @@
     <link rel="stylesheet" type="text/css" href="../css.css"/>
 </head>
 <body>
-    <?php if ($add){ ?>
-    <p>Новость успешно добавлена!</p>
-    <?php } ?>
+    <?php if ($add): ?>
+        <p>Новость успешно добавлена!</p>
+    <?php endif;
+    if ($edit):?>
+        <p>Новость успешно отредактирована!</p>
+    <?php endif ?>
     <h1>Новости</h1>
     <form action="/index.php?act=Add&&ctrl=Admin" method="post">
         <input type="submit" name="addNew" value="Добавить новость">

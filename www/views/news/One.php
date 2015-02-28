@@ -6,9 +6,10 @@
     <link rel="stylesheet" type="text/css" href="../css.css"/>
 </head>
 <body>
-    <h1><?php echo htmlspecialchars_decode($this->data->name, ENT_QUOTES); ?></h1>
+    <?php #var_dump($news); die; ?>
+    <h1><?php echo htmlspecialchars_decode($news->name, ENT_QUOTES); ?></h1>
     <p>
-        <?php echo htmlspecialchars_decode($this->data->content, ENT_QUOTES); ?>
+        <?php echo htmlspecialchars_decode($news->content, ENT_QUOTES); ?>
         <br>
         Дата добавления: <?php echo $this->data->time; ?>
     </p>

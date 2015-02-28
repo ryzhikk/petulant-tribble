@@ -12,17 +12,17 @@
             <label>
                 Заголовок
                 <br>
-                <input type="text" name="name">
+                <input type="text" name="name" value="<?php echo $news->name ?>">
                 <br>
             </label>
             <label>
                 Содержание новости
                 <br>
-                <textarea name="content"></textarea>
-                <input type="submit" name="send" value="Редактировать">
+                <textarea name="content"><?php echo $news->content ?></textarea>
+                <input type="submit" name="edit" value="Редактировать">
             </label>
         </form>
-        <a href="/new.php?id=<?php echo $_GET['id'] ?>">Назад</a>
+        <a href="/index.php?id=<?php echo $_GET['id'] ?>&&act=One">Назад</a>
     </fieldset>
 
 </body>
