@@ -11,8 +11,6 @@ class NewsController
 
     public function actionAll()
     {
-        $add = $_COOKIE['add'];
-        setcookie('add', '', time()-3600);
 
         $news = News::GetAllArticle();
 
