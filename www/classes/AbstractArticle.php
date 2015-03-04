@@ -1,36 +1,79 @@
 <?php
-require __DIR__ . '/SqlQuery.php';
+
 
 abstract class AbstractArticle
 {
-    public $name;
-    public $content;
     public $id;
-    public $time;
-    protected static $sql_table;
+    protected static $sqlTable;
     protected static  $class;
+    /**
+     * @var array со всякими данными для запроса в базу данных
+     */
+    protected $data = [];
 
-    public static  function GetAllArticle() {
-        $query = new SqlQuery();
-        return $query->GetAll(static::$sql_table, static::$class);
-    }
-    public function GetOneArticle()
+
+    public function __set($k, $v)
     {
-        $query = new SqlQuery();
-        return $query->GetOne(static::$sql_table, $this->id, static::$class);
+        $this->data[$k] = $v;
     }
-    public static function AddNewArticle()
+
+    public  function  __get($k)
     {
-        $query = new SqlQuery();
-        $add_name = htmlspecialchars($_POST['name'], ENT_QUOTES);
-        $add_content = htmlspecialchars($_POST['content'], ENT_QUOTES);
-        return $query->AddNew(static::$sql_table, $add_name, $add_content);
+        return $this->data[$k];
     }
-    public function EditArticle()
+
+    public static function GetAllArticle()
+    {
+        $class = get_called_class();
+        $sql = "SELECT * FROM " . static::$sqlTable;
+        $db = new SqlQuery();
+        $db->SetClassName($class);
+        return $db->Query($sql);
+    }
+
+    public function GetOneArticleByPk()
+    {
+        $class = get_called_class();
+        $sql = "SELECT * FROM " . static::$sqlTable . " WHERE id=:id";
+        $db = new SqlQuery();
+        $db->SetClassName($class);
+        return $db->Query($sql, [':id' => $this->id])[0];
+    }
+
+    public function InsertArticle()
+    {
+        /**
+         *  Массив полей таблицы в шаблон запроса в базу
+         */
+        $cols = array_keys($this->data);
+
+        /**
+         * $data - Массив со значениями полей
+         * Его ключи - подстановки для значений полей в шаблоне запроса
+         */
+        $data = [];
+        foreach ($cols as $col)
+        {
+            $data[':' . $col] = $this->data[$col];
+        }
+
+        $query = new SqlQuery();
+        $sql =
+            "INSERT INTO " . static::$sqlTable . "
+            (" . implode(', ', $cols) . ")
+            VALUES
+            (" . implode(', ', array_keys($data)) . ")";
+
+        #var_dump($sql); die;
+
+        return $query->Execute($sql, $data);
+    }
+
+    public function UpdateArticle()
     {
         $query = new SqlQuery();
         $update_name = htmlspecialchars($_POST['name'], ENT_QUOTES);
         $update_content = htmlspecialchars($_POST['content'], ENT_QUOTES);
-        return $query->EditOne (static::$sql_table, $this->id, $update_name, $update_content);
+        return $query->EditOne (static::$sqlTable, $this->id, $update_name, $update_content);
     }
 }

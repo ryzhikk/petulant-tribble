@@ -14,10 +14,16 @@
         {
             require __DIR__ . '/../functions/session.php';
 
-            if (!empty ($_POST['send_new'])) {
+            if (!empty ($_POST['send_new']))
+            {
 
+                $objNews = new News;
+                $objNews->name = htmlspecialchars($_POST['name'], ENT_QUOTES);
+                $objNews->content = htmlspecialchars($_POST['content'], ENT_QUOTES);
 
-                if (News::AddNewArticle()) {
+                #var_dump($this->name); die;
+
+                if ($objNews->InsertArticle()) {
                     setcookie('add', 'news', time()+3600);
                     header ('Location: /index.php');
                 }
@@ -27,7 +33,7 @@
                 }
             }
             $view = new View();
-            $view->display(News::$sql_table, $this->act);
+            $view->display(News::$sqlTable, $this->act);
             var_dump($_SESSION);
 
         }
@@ -38,7 +44,7 @@
             {
                 $editOne = new News();
                 $editOne->id = $_GET['id'];
-                if ($editOne->EditArticle())
+                if ($editOne->UpdateArticle())
                 {
                     setcookie('edit', 'news', time()+3600);
                     header ('Location: /index.php');

@@ -1,17 +1,16 @@
 <?php
 require __DIR__ . '/../classes/AbstractArticle.php';
 
-class News extends AbstractArticle {
+    class News
+        extends AbstractArticle
+    {
+        /*
+        public $name;
+        public $content;
+        public $time;
+        */
+        protected static $class = 'News';
+        public static $sqlTable = 'news';
 
-    protected static $class = 'News';
-    public static $sql_table = 'news';
 
-   # public function __construct()
-   # {
-   #     if (!empty($_Get['id']))
-   #     {
-   #        $this->id = $_GET['id'];
-   #     }
-   # }
-
-}
+    }

@@ -11,7 +11,7 @@
     <p>
         <?php echo htmlspecialchars_decode($news->content, ENT_QUOTES); ?>
         <br>
-        Дата добавления: <?php echo $this->data->time; ?>
+        Дата добавления: <?php echo $news->time; ?>
     </p>
     <a href="/index.php?id=<?php echo $_GET['id']?>&&act=Edit&&ctrl=Admin">Редактировать новость</a>
     <br>

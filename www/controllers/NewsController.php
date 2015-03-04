@@ -11,30 +11,26 @@ class NewsController
 
     public function actionAll()
     {
-
         $news = News::GetAllArticle();
 
         $view = new View();
-        $view->assign('news', $news);
-        $view->items = $news;
-        $view->display(News::$sql_table, $this->act);
+        $view->news = $news;
+        $view->display(News::$sqlTable, $this->act);
     }
 
     public function actionOne()
     {
         if (!empty ($_GET['id']))
         {
+            $objNews  = new News();
+            $objNews->id = $_GET['id'];
+            $news = $objNews->GetOneArticleByPk();
 
-        $getOne = new News();
-        $getOne->id = $_GET['id'];
-        $news = $getOne->GetOneArticle();
-        #var_dump($news); die;
+            #var_dump($news); die;
 
-
-        $view = new View();
-        $view->assign('news', $news);
-        $view->items = $news;
-        $view->display(News::$sql_table, $this->act);
+            $view = new View();
+            $view->news = $news;
+            $view->display(News::$sqlTable, $this->act);
         }
 
         else
@@ -44,3 +40,5 @@ class NewsController
     }
 
 }
+
+

@@ -5,15 +5,14 @@ class View
     public $data;
     public $address;
 
-    public function assign($name, $value)
-    {
-        $this->data[$name] = $value;
-
-    }
-
     public function __set($name, $val)
     {
         $this->data[$name] = $val;
+    }
+
+    public function __get($k)
+    {
+        return $this->data[$k];
     }
 
     public function display($section, $act)
