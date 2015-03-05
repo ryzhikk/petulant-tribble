@@ -29,7 +29,7 @@
                 }
 
                 else {
-                    echo 'Ошибка!';
+                    return 'Ошибка!';
                 }
             }
             $view = new View();

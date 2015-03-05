@@ -44,6 +44,7 @@ abstract class AbstractArticle
         $class = get_called_class();
         $sql = "SELECT * FROM " . static::$sqlTable . " WHERE " . $column . "=:" . $column;
         $db = new DB();
+        var_dump($sql); die;
         $db->SetClassName($class);
         return $db->Query($sql, [':' . $column => $value])[0];
     }

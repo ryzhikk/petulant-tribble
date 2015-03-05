@@ -13,6 +13,16 @@
     if ($edit):?>
         <p>Новость успешно отредактирована!</p>
     <?php endif ?>
+    <div>
+
+        <form action="/index.php" method="get">
+            <label>Поиск по названию новостей
+                <input type="hidden" name="act" value="Search">
+                <input type="text" name="text">
+                <input type="submit" name="nameOfColumn" value="title">
+            </label>
+        </form>
+    </div>
     <h1>Новости</h1>
     <form action="/index.php?act=Add&&ctrl=Admin" method="post">
         <input type="submit" name="addNew" value="Добавить новость">
