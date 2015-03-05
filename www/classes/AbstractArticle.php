@@ -3,7 +3,6 @@
 
 abstract class AbstractArticle
 {
-    public $id;
     protected static $sqlTable;
     protected static  $class;
     /**
@@ -71,9 +70,45 @@ abstract class AbstractArticle
 
     public function UpdateArticle()
     {
+        /**
+         *  Массив подстановок полей таблицы в шаблон запроса в базу
+         */
+        #$cols = array_keys($this->data);
+
+        $cols = [];
+        foreach ($this->data as $key => $value)
+        {
+            $cols[$key] = ':' . $key;
+        }
+
+        /**
+         * $data - Переменная с подстановками имён и значений полей для запроса в базу
+         */
+        $data = implode(', ', array_map(function($k, $v)
+                                        {
+                                              return   $k . '=' . $v;
+                                        },
+                                        array_keys($cols), array_values($cols)));
+
+        /**
+         * $valuesOfFields - Массив со значениями полей
+         * Его ключи - подстановки для значений полей в шаблоне запроса
+         */
+        $valuesOfFields = [];
+        foreach ($cols as $key => $val)
+        {
+            $valuesOfFields[$val] = $this->data[$key];
+        }
+
+        #$class = get_called_class();
+        $sql =
+            "UPDATE " . static::$sqlTable . " SET "
+            . $data .
+            " WHERE id='" . $this->id . "'";
+
+        #var_dump($sql); die;
+
         $query = new SqlQuery();
-        $update_name = htmlspecialchars($_POST['name'], ENT_QUOTES);
-        $update_content = htmlspecialchars($_POST['content'], ENT_QUOTES);
-        return $query->EditOne (static::$sqlTable, $this->id, $update_name, $update_content);
+        return $query->Execute($sql, $valuesOfFields);
     }
 }

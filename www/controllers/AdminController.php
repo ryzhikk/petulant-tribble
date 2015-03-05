@@ -24,7 +24,7 @@
                 #var_dump($this->name); die;
 
                 if ($objNews->InsertArticle()) {
-                    setcookie('add', 'news', time()+3600);
+                    #setcookie('add', 'news', time()+3600);
                     header ('Location: /index.php');
                 }
 
@@ -42,11 +42,13 @@
         {
             if (!empty ($_POST['edit']))
             {
-                $editOne = new News();
-                $editOne->id = $_GET['id'];
-                if ($editOne->UpdateArticle())
+                $objNews = new News();
+                $objNews->id = $_GET['id'];
+                $objNews->name = htmlspecialchars($_POST['name'], ENT_QUOTES);
+                $objNews->content = htmlspecialchars($_POST['content'], ENT_QUOTES);
+                if ($objNews->UpdateArticle())
                 {
-                    setcookie('edit', 'news', time()+3600);
+                    #setcookie('edit', 'news', time()+3600);
                     header ('Location: /index.php');
                 }
             }
