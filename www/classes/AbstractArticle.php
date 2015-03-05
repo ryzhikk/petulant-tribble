@@ -25,7 +25,7 @@ abstract class AbstractArticle
     {
         $class = get_called_class();
         $sql = "SELECT * FROM " . static::$sqlTable;
-        $db = new SqlQuery();
+        $db = new DB();
         $db->SetClassName($class);
         return $db->Query($sql);
     }
@@ -34,9 +34,18 @@ abstract class AbstractArticle
     {
         $class = get_called_class();
         $sql = "SELECT * FROM " . static::$sqlTable . " WHERE id=:id";
-        $db = new SqlQuery();
+        $db = new DB();
         $db->SetClassName($class);
         return $db->Query($sql, [':id' => $this->id])[0];
+    }
+
+    public static  function GetOneArticleByColumn($column, $value)
+    {
+        $class = get_called_class();
+        $sql = "SELECT * FROM " . static::$sqlTable . " WHERE " . $column . "=:" . $column;
+        $db = new DB();
+        $db->SetClassName($class);
+        return $db->Query($sql, [':' . $column => $value])[0];
     }
 
     public function InsertArticle()
@@ -56,7 +65,7 @@ abstract class AbstractArticle
             $data[':' . $col] = $this->data[$col];
         }
 
-        $query = new SqlQuery();
+        $query = new DB();
         $sql =
             "INSERT INTO " . static::$sqlTable . "
             (" . implode(', ', $cols) . ")
@@ -108,7 +117,8 @@ abstract class AbstractArticle
 
         #var_dump($sql); die;
 
-        $query = new SqlQuery();
+        $query = new DB ();
         return $query->Execute($sql, $valuesOfFields);
     }
+
 }

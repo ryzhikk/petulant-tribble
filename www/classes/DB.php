@@ -1,6 +1,6 @@
 <?php
 
-    class SqlQuery
+    class DB
     {
         private $dbh;
         private $className = 'StdClass';
