@@ -10,7 +10,7 @@
             $config = new CConfig();
 
             $sdn = 'mysql:dbname=' . $config->dbName . ';host=' . $config->hostName;
-            $this->dbh = new PDO($sdn, $config->mysqlLogin, $config->mysqlPass);
+            $this->dbh = new PDO($sdn, $config->mysqlLogin, $config->mysqlPass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
         }
 
         public function SetClassName($className)

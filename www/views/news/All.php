@@ -19,7 +19,7 @@
             <label>Поиск по названию новостей
                 <input type="hidden" name="act" value="Search">
                 <input type="text" name="text">
-                <input type="submit" name="nameOfColumn" value="title">
+                <input type="submit" name="nameOfColumn" value="name">
             </label>
         </form>
     </div>

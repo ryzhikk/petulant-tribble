@@ -42,11 +42,11 @@ abstract class AbstractArticle
     public static  function GetOneArticleByColumn($column, $value)
     {
         $class = get_called_class();
-        $sql = "SELECT * FROM " . static::$sqlTable . " WHERE " . $column . "=:" . $column;
+        $sql = "SELECT * FROM " . static::$sqlTable . " WHERE " . $column . "=:value";
         $db = new DB();
-        var_dump($sql); die;
+        #var_dump([':' . $column => $value]); die;
         $db->SetClassName($class);
-        return $db->Query($sql, [':' . $column => $value])[0];
+        return $db->Query($sql, [':value' => $value]);
     }
 
     public function InsertArticle()

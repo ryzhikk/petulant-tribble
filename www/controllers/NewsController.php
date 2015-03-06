@@ -41,7 +41,7 @@ class NewsController
 
     public function actionSearch ()
     {
-        var_dump($_GET);
+        #var_dump($_GET);
 
         $news = News::GetOneArticleByColumn($_GET['nameOfColumn'], $_GET['text']);
 
