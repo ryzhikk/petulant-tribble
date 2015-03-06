@@ -31,6 +31,11 @@
             return $sth->execute($params);
         }
 
+        public function LastInsertId ()
+        {
+            return $this->dbh->lastInsertId();
+        }
+
         /*
         public function GetAll($table, $class = 'stdClass')
         {

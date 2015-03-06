@@ -15,7 +15,7 @@
     </p>
     <a href="/index.php?id=<?php echo $_GET['id']?>&&act=Edit&&ctrl=Admin">Редактировать новость</a>
     <br>
-    <a href="/index.php">Назад</a>
+    <a href="/index.php">На главную</a>
 
 </body>
 </html>

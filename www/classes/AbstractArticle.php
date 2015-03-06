@@ -21,6 +21,11 @@ abstract class AbstractArticle
         return $this->data[$k];
     }
 
+    public function __isset($v)
+    {
+        return isset($this->data[$v]);
+    }
+
     public static function GetAllArticle()
     {
         $class = get_called_class();
@@ -74,8 +79,17 @@ abstract class AbstractArticle
             (" . implode(', ', array_keys($data)) . ")";
 
         #var_dump($sql); die;
+        $res = $query->Execute($sql, $data);
 
-        return $query->Execute($sql, $data);
+        /**
+         * Возвращение id добаленной новости или при неудачном запросе false
+         */
+        if (true == $res)
+        {
+            $this->id = $query->LastInsertId();
+        }
+
+        return $res;
     }
 
     public function UpdateArticle()
@@ -94,11 +108,13 @@ abstract class AbstractArticle
         /**
          * $data - Переменная с подстановками имён и значений полей для запроса в базу
          */
-        $data = implode(', ', array_map(function($k, $v)
+        $data = implode(', ', array_map(
+                                        function($k, $v)
                                         {
                                               return   $k . '=' . $v;
                                         },
-                                        array_keys($cols), array_values($cols)));
+                                        array_keys($cols), array_values($cols))
+                        );
 
         /**
          * $valuesOfFields - Массив со значениями полей
@@ -115,11 +131,22 @@ abstract class AbstractArticle
             "UPDATE " . static::$sqlTable . " SET "
             . $data .
             " WHERE id='" . $this->id . "'";
-
         #var_dump($sql); die;
 
         $query = new DB ();
         return $query->Execute($sql, $valuesOfFields);
+        #var_dump($this->data);
     }
 
+    public function SaveArticle()
+    {
+        if (isset ($this->id))
+        {
+            return $this->UpdateArticle();
+        }
+        else
+        {
+            return $this->InsertArticle();
+        }
+    }
 }
