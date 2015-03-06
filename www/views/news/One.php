@@ -13,7 +13,9 @@
         <br>
         Дата добавления: <?php echo $news->time; ?>
     </p>
-    <a href="/index.php?id=<?php echo $_GET['id']?>&&act=Edit&&ctrl=Admin">Редактировать новость</a>
+    <a href="/index.php?ctrl=Admin&&act=Edit&&id=<?php echo $news->id ?>">Редактировать новость</a>
+    <br>
+    <a href="/index.php?ctrl=Admin&&act=Del&&id=<?php echo $news->id ?>">Удалить</a>
     <br>
     <a href="/index.php">На главную</a>
 

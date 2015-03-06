@@ -149,4 +149,12 @@ abstract class AbstractArticle
             return $this->InsertArticle();
         }
     }
+
+    public function Delete()
+    {
+        $sql = "DELETE FROM " . static::$sqlTable . " WHERE id=:id";
+        $query = new DB ();
+        #var_dump($this->id); die;
+        return $query->Execute($sql, [':id' => $this->id]);
+    }
 }

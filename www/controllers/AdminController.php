@@ -59,4 +59,22 @@
 
             }
         }
+
+        public function actionDel()
+        {
+            if ($_GET['id'])
+            {
+                $objNews = new News();
+                $objNews->id = $_GET['id'];
+                if ($objNews->Delete())
+                {
+                    header('Location: /');
+                }
+            }
+            else
+            {
+                return 'ERROR';
+                #header('Location: /');
+            }
+        }
     }
