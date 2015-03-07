@@ -23,19 +23,22 @@
 
                 #var_dump($this->name); die;
 
-                if ($objNews->SaveArticle()) {
+                if ($objNews->SaveArticle())
+                {
                     #setcookie('add', 'news', time()+3600);
-                    header ('Location: /index.php?act=One&&id=' . $objNews->id);
+                    header('Location: /index.php?act=One&&id=' . $objNews->id);
                 }
-
-                else {
-                    return 'Ошибка!';
+                else
+                {
+                    return 'error!';
                 }
             }
-            $view = new View();
-            $view->display(News::$sqlTable, $this->act);
-            var_dump($_SESSION);
-
+            else
+            {
+                $view = new View();
+                $view->display($this->act, News::$sqlTable);
+                #var_dump($_SESSION);
+            }
         }
 
         public function actionEdit()
@@ -51,12 +54,23 @@
                     #setcookie('edit', 'news', time()+3600);
                     header ('Location: /index.php?act=One&&id=' . $objNews->id);
                 }
+                else
+                {
+                    return 'error!';
+                }
             }
-            if (!empty ($_GET['id']))
+            else
             {
-                $showOne = new NewsController($this->act);
-                $showOne->actionOne();
+                if (!empty ($_GET['id']))
+                {
+                    $showOne = new NewsController($this->act);
+                    $showOne->actionOne();
 
+                }
+                else
+                {
+                    throw new E404Exeption('Неизвестная ошибка.');
+                }
             }
         }
 
@@ -73,8 +87,7 @@
             }
             else
             {
-                return 'ERROR';
-                #header('Location: /');
+                return 'error!';
             }
         }
     }

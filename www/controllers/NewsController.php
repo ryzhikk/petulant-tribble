@@ -11,11 +11,18 @@ class NewsController
 
     public function actionAll()
     {
+        #var_dump($_SERVER); die;
         $news = News::GetAllArticle();
-
-        $view = new View();
-        $view->news = $news;
-        $view->display(News::$sqlTable, $this->act);
+        if (false != $news)
+        {
+            $view = new View();
+            $view->news = $news;
+            $view->display($this->act, News::$sqlTable);
+        }
+        else
+        {
+            throw new E404Exeption;
+        }
     }
 
     public function actionOne()
@@ -28,14 +35,21 @@ class NewsController
 
             #var_dump($news); die;
 
-            $view = new View();
-            $view->news = $news;
-            $view->display(News::$sqlTable, $this->act);
+            if (false != $news)
+            {
+                $view = new View();
+                $view->news = $news;
+                $view->display($this->act, News::$sqlTable);
+            }
+            else
+            {
+                throw new E404Exeption('Такой новости не найдено!');
+            }
         }
 
         else
         {
-            return 'Error!';
+            throw new E404Exeption;
         }
     }
 
@@ -44,11 +58,17 @@ class NewsController
         #var_dump($_GET);
 
         $news = News::GetOneArticleByColumn($_GET['nameOfColumn'], $_GET['text']);
-
-        $view = new View();
-        $view->news = $news;
-        #var_dump($news); die;
-        $view->display(News::$sqlTable, $this->act);
+        if (false != $news)
+        {
+            $view = new View();
+            $view->news = $news;
+            #var_dump($news); die;
+            $view->display($this->act, News::$sqlTable);
+        }
+        else
+        {
+            throw new E404Exeption('Совпадений не найдено!');
+        }
     }
 
 }

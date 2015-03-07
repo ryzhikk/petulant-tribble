@@ -8,9 +8,12 @@
         public function __construct()
         {
             $config = new CConfig();
-
             $sdn = 'mysql:dbname=' . $config->dbName . ';host=' . $config->hostName;
-            $this->dbh = new PDO($sdn, $config->mysqlLogin, $config->mysqlPass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+            $this->dbh = new PDO($sdn,
+                                $config->mysqlLogin,
+                                $config->mysqlPass,
+                                array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+            $this->dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
 
         public function SetClassName($className)
@@ -20,20 +23,54 @@
 
         public function Query($sql, $params = [])
         {
-            $sth = $this->dbh->prepare($sql);
-            $sth->execute($params);
-            return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
+            try {
+                $sth = $this->dbh->prepare($sql);
+                $sth->execute($params);
+                return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
+            }
+            catch (PDOException $e) {
+                $view = new View();
+                $view->error = $e->getMessage();
+                $view->display('Error403', 'error');
+
+                $error = new LogsErrorPDO();
+                /*if (false === */$error->recordErrorLog($e->getMessage());//)
+                #{ echo 'Nope :('; }
+                die;
+            }
         }
 
         public function Execute($sql, $params = [])
         {
-            $sth = $this->dbh->prepare($sql);
-            return $sth->execute($params);
+            try {
+                $sth = $this->dbh->prepare($sql);
+                return $sth->execute($params);
+            }
+            catch (PDOException $e) {
+                $view = new View();
+                $view->error = $e->getMessage();
+                $view->display('Error403', 'error');
+
+                $error = new LogsErrorPDO();
+                $error->recordErrorLog($e->getMessage());
+                die;
+            }
         }
 
         public function LastInsertId ()
         {
-            return $this->dbh->lastInsertId();
+            try {
+                return $this->dbh->lastInsertId();
+            }
+            catch (PDOException $e) {
+                $view = new View();
+                $view->error = $e->getMessage();
+                $view->display('Error403', 'error');
+
+                $error = new LogsErrorPDO();
+                $error->recordErrorLog($e->getMessage());
+                die;
+            }
         }
 
         /*

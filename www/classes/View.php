@@ -15,7 +15,7 @@ class View
         return $this->data[$k];
     }
 
-    public function display($section, $act)
+    public function display($act, $section = '')
     {
         if($this->data)
         {

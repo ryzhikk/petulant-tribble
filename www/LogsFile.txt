@@ -1,0 +1,5 @@
+07-03-2015, 22:56:03
+C:/OpenServer/domains/test/www/index.php
+13
+SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected
+
