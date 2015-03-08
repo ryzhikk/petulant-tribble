@@ -12,7 +12,7 @@
         text-align: center;
     }
 </style>
-
+    <a href="/">На главную</a>
     <h1>Логи ошибок PDO</h1>
     <pre><?php echo $logs; ?></pre>
 
