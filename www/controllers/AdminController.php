@@ -4,12 +4,10 @@
     {
 
         public $act;
-
         public function __construct($actDir)
         {
             $this->act = $actDir;
         }
-
         public function actionAdd()
         {
             require __DIR__ . '/../functions/session.php';
@@ -20,9 +18,7 @@
                 $objNews = new News;
                 $objNews->name = htmlspecialchars($_POST['name'], ENT_QUOTES);
                 $objNews->content = htmlspecialchars($_POST['content'], ENT_QUOTES);
-
                 #var_dump($this->name); die;
-
                 if ($objNews->SaveArticle())
                 {
                     #setcookie('add', 'news', time()+3600);
@@ -65,7 +61,6 @@
                 {
                     $showOne = new NewsController($this->act);
                     $showOne->actionOne();
-
                 }
                 else
                 {
@@ -87,7 +82,15 @@
             }
             else
             {
-                return 'error!';
+                throw new E404Exeption('Удаление не удалось.');
             }
+        }
+
+        public function actionLogsErrorPDO()
+        {
+            $logs = LogsErrorPDO::readErrorLog();
+            $view = new View();
+            $view->logs = $logs;
+            $view->display($this->act, 'error');
         }
     }

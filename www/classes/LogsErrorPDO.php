@@ -20,6 +20,12 @@
                         $this->point . "\n" .
                         $this->line . "\n" .
                         $this->textError . "\n\n";
-            file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/LogsFile.txt', $textLog, FILE_APPEND | LOCK_EX);
+            file_put_contents(LOGS_ERROR_PDO, $textLog, FILE_APPEND | LOCK_EX);
+        }
+
+        public static  function readErrorLog()
+        {
+            $logs = file_get_contents(LOGS_ERROR_PDO);
+            return $logs;
         }
     }

@@ -1,5 +1,6 @@
 <?php
     require_once __DIR__ . '/autoload.php';
+    require __DIR__ . '/const.php';
 
     /* $add = $_COOKIE['add'];
     setcookie('add', '', time() - 3600);
