@@ -88,7 +88,7 @@
 
         public function actionLogsErrorPDO()
         {
-            $logs = LogsErrorPDO::readErrorLog();
+            $logs = LogsError::readErrorLog();
             $view = new View();
             $view->logs = $logs;
             $view->display($this->act, 'error');

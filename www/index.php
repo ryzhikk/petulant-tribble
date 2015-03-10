@@ -22,7 +22,8 @@
     {
         $view = new View();
         $view->error = $e->getMessage();
-        $view->display('Error404', 'error');
+        $view->exeption = 'E404Exeption';
+        $view->display('Error', 'error');
     }
 
 

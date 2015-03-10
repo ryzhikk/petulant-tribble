@@ -29,14 +29,7 @@
                 return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
             }
             catch (PDOException $e) {
-                $view = new View();
-                $view->error = $e->getMessage();
-                $view->display('Error403', 'error');
-
-                $error = new LogsErrorPDO();
-                /*if (false === */$error->recordErrorLog($e->getMessage());//)
-                #{ echo 'Nope :('; }
-                die;
+                throw new E403Exeption;
             }
         }
 
@@ -47,13 +40,7 @@
                 return $sth->execute($params);
             }
             catch (PDOException $e) {
-                $view = new View();
-                $view->error = $e->getMessage();
-                $view->display('Error403', 'error');
-
-                $error = new LogsErrorPDO();
-                $error->recordErrorLog($e->getMessage());
-                die;
+                throw new E403Exeption;
             }
         }
 
@@ -63,13 +50,7 @@
                 return $this->dbh->lastInsertId();
             }
             catch (PDOException $e) {
-                $view = new View();
-                $view->error = $e->getMessage();
-                $view->display('Error403', 'error');
-
-                $error = new LogsErrorPDO();
-                $error->recordErrorLog($e->getMessage());
-                die;
+                throw new E403Exeption;
             }
         }
 
