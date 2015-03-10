@@ -64,7 +64,7 @@
                 }
                 else
                 {
-                    throw new E404Exeption('Неизвестная ошибка.');
+                    throw new E404Exeption('Неизвестная ошибка!');
                 }
             }
         }
