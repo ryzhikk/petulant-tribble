@@ -23,6 +23,6 @@
             </label>
         </form>
      </fieldset>
-    <a href="/index.php">Вернуться на главную</a>
+    <a href="/">Вернуться на главную</a>
 </body>
 </html>

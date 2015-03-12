@@ -13,7 +13,7 @@ class NewsController
     {
         #var_dump($_SERVER); die;
         try {$news = News::GetAllArticle();
-            if (false === $news)
+            if (false == $news)
             {
                 throw new E404Exeption;
             }
@@ -40,12 +40,12 @@ class NewsController
     {
         if (!empty ($_GET['id']))
         {
-            $objNews  = new News();
+            $objNews = new News();
             $objNews->id = $_GET['id'];
             try {
                 $news = $objNews->GetOneArticleByPk();
                 #var_dump($news); die;
-                if (false === $news)
+                if (false == $news)
                 {
                     throw new E404Exeption('Такой новости не найдено!');
                 }
@@ -79,7 +79,7 @@ class NewsController
         #var_dump($_GET);
         try {
             $news = News::GetOneArticleByColumn($_GET['nameOfColumn'], $_GET['text']);
-            if (false === $news)
+            if (false == $news)
             {
                 throw new E404Exeption('Совпадений не найдено!');
             }

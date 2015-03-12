@@ -21,7 +21,7 @@
 <?php
     #var_dump($news); die;
     foreach($news as $new){ ?>
-        <a href="/index.php/?id=<?php echo $new->id; ?>&&act=One">
+        <a href="/News/One?id=<?php echo $new->id; ?>">
             <strong><?php echo htmlspecialchars_decode($new->name, ENT_QUOTES); ?></strong>
         </a>
         <p>

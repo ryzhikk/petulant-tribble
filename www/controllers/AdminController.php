@@ -48,7 +48,7 @@
                 if ($objNews->SaveArticle())
                 {
                     #setcookie('edit', 'news', time()+3600);
-                    header ('Location: /index.php?act=One&&id=' . $objNews->id);
+                    header ('Location: /News/One&id=' . $objNews->id);
                 }
                 else
                 {
@@ -86,7 +86,7 @@
             }
         }
 
-        public function actionLogsErrorPDO()
+        public function actionLogsError()
         {
             $logs = LogsError::readErrorLog();
             $view = new View();

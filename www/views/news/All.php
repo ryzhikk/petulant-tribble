@@ -14,11 +14,11 @@
         <p>Новость успешно отредактирована!</p>
     <?php endif ?>
     <p>
-        <a href="/index.php?ctrl=Admin&act=LogsErrorPDO">Просмотр логов ошибок PDO</a>
+        <a href="/Admin/LogsError">Просмотр логов ошибок PDO</a>
     </p>
     <div>
 
-        <form action="/index.php" method="get">
+        <form action="/" method="get">
             <label>Поиск по названию новостей
                 <input type="hidden" name="act" value="Search">
                 <input type="text" name="text">
@@ -27,13 +27,13 @@
         </form>
     </div>
     <h1>Новости</h1>
-    <form action="/index.php?act=Add&ctrl=Admin" method="post">
+    <form action="/Admin/Add" method="post">
         <input type="submit" name="addNew" value="Добавить новость">
     </form>
     <?php
         #var_dump($news); die;
         foreach($news as $new){ ?>
-            <a href="/index.php/?id=<?php echo $new->id; ?>&act=One">
+            <a href="/News/One?id=<?php echo $new->id; ?>">
                 <strong><?php echo htmlspecialchars_decode($new->name, ENT_QUOTES); ?></strong>
             </a>
             <p>
