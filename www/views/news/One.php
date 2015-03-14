@@ -13,9 +13,9 @@
         <br>
         Дата добавления: <?php echo $news->time; ?>
     </p>
-    <a href="/Admin/Edit?id=<?php echo $news->id ?>">Редактировать новость</a>
+    <a href="/admin/edit?id=<?php echo $news->id ?>">Редактировать новость</a>
     <br>
-    <a href="/Admin/Del?id=<?php echo $news->id ?>">Удалить</a>
+    <a href="/admin/del?id=<?php echo $news->id ?>">Удалить</a>
     <br>
     <a href="/">На главную</a>
 

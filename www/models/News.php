@@ -1,8 +1,12 @@
 <?php
-require __DIR__ . '/../classes/AbstractArticle.php';
+    namespace App\Models;
+
+    require __DIR__ . '/../classes/AbstractArticle.php';
+
+
 
     class News
-        extends AbstractArticle
+        extends \AbstractArticle
     {
         /*
         public $name;

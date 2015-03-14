@@ -14,7 +14,7 @@
         <p>Новость успешно отредактирована!</p>
     <?php endif ?>
     <p>
-        <a href="/Admin/LogsError">Просмотр логов ошибок PDO</a>
+        <a href="/admin/logsError">Просмотр логов ошибок PDO</a>
     </p>
     <div>
 
@@ -27,13 +27,13 @@
         </form>
     </div>
     <h1>Новости</h1>
-    <form action="/Admin/Add" method="post">
+    <form action="/admin/add" method="post">
         <input type="submit" name="addNew" value="Добавить новость">
     </form>
     <?php
         #var_dump($news); die;
         foreach($news as $new){ ?>
-            <a href="/News/One?id=<?php echo $new->id; ?>">
+            <a href="/news/one?id=<?php echo $new->id; ?>">
                 <strong><?php echo htmlspecialchars_decode($new->name, ENT_QUOTES); ?></strong>
             </a>
             <p>

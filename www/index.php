@@ -1,4 +1,5 @@
 <?php
+    #error_reporting(E_ALL);
     require_once __DIR__ . '/autoload.php';
     require __DIR__ . '/const.php';
 
@@ -11,13 +12,13 @@
     $pathParts = explode('/', $path);
     #var_dump($pathParts); die;
 
-    $ctrl = !empty($pathParts[1]) ? $pathParts[1] : 'News';
-    $act = !empty($pathParts[2]) ? $pathParts[2] : 'All';
+    $ctrl = !empty($pathParts[1]) ? ucfirst($pathParts[1]) : 'News';
+    $act = !empty($pathParts[2]) ? ucfirst($pathParts[2]) : 'All';
 
     #$ctrl = isset($_GET['ctrl']) ? $_GET['ctrl'] : 'News';
     #$act = isset($_GET['act']) ? $_GET['act'] : 'All';
 
-    $controllerClassName = $ctrl . 'Controller';
+    $controllerClassName = 'App\\Controllers\\' . $ctrl;
     #var_dump($controllerClassName); die;
 
     try
@@ -32,6 +33,7 @@
         $view->error = $e->getMessage();
         $view->exeption = 'E404Exeption';
         $view->display('Error', 'error');
+        $mail = new PHPMailer();
     }
 
 

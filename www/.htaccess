@@ -1,4 +1,6 @@
 RewriteEngine On
 RewriteBase /
 
+RewriteCond %{REQUEST_FILEMANE} !-f
+RewriteCond %{REQUEST_FILEMANE} !-d
 RewriteRule ^(.*)$ index.php

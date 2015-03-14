@@ -22,7 +22,7 @@
                 <input type="submit" name="edit" value="Редактировать">
             </label>
         </form>
-        <a href="/News/One?id=<?php echo $_GET['id'] ?>">Назад</a>
+        <a href="/news/one?id=<?php echo $_GET['id'] ?>">Назад</a>
     </fieldset>
 
 </body>
