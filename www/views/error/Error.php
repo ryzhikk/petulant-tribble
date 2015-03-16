@@ -25,7 +25,8 @@
 </style>
 <div>
     <h1>Ошибка!</h1>
-    <p><?php echo $error, $code; ?></p>
+    <p><?php echo $error; ?></p>
+    <p><?php echo $reportMail; ?></p>
 </div>
 </body>
 </html>

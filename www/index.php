@@ -32,8 +32,10 @@
         $view = new View();
         $view->error = $e->getMessage();
         $view->exeption = 'E404Exeption';
+
+        $mail = new Mailer;
+        $view->reportMail = $mail->SendMail($e->getMessage());
         $view->display('Error', 'error');
-        $mail = new PHPMailer();
     }
 
 
