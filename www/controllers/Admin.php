@@ -29,7 +29,7 @@
                 }
                 else
                 {
-                    return 'error!';
+                    throw new \E403Exeption();
                 }
             }
             else
@@ -55,7 +55,7 @@
                 }
                 else
                 {
-                    return 'error!';
+                    throw new \E403Exeption();
                 }
             }
             else
@@ -81,6 +81,9 @@
                 if ($objNews->Delete())
                 {
                     header('Location: /');
+                }
+                else {
+                    throw new \E403Exeption();
                 }
             }
             else

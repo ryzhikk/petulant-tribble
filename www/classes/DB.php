@@ -29,7 +29,7 @@
                 return $sth->fetchAll(PDO::FETCH_CLASS, $this->className);
             }
             catch (PDOException $e) {
-                throw new E403Exeption;
+                throw new E403Exeption($e->getMessage());
             }
         }
 
@@ -40,7 +40,7 @@
                 return $sth->execute($params);
             }
             catch (PDOException $e) {
-                throw new E403Exeption;
+                throw new E403Exeption($e->getMessage());
             }
         }
 
@@ -50,7 +50,7 @@
                 return $this->dbh->lastInsertId();
             }
             catch (PDOException $e) {
-                throw new E403Exeption;
+                throw new E403Exeption($e->getMessage());
             }
         }
 

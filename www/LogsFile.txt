@@ -3,3 +3,13 @@ C:/OpenServer/domains/test/www/index.php
 13
 SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected
 
+16-03-2015, 12:36:10
+C:/OpenServer/domains/test/www/index.php
+13
+
+
+16-03-2015, 12:40:34
+C:/OpenServer/domains/test/www/index.php
+13
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FRM news' at line 1
+

@@ -27,15 +27,28 @@
     $method = 'action' . $act;
     $controller->$method();
     }
-    catch (E404Exeption $e)
+    catch (\E404Exeption $e)
     {
-        $view = new View();
+        $view = new \View();
         $view->error = $e->getMessage();
         $view->exeption = 'E404Exeption';
 
-        $mail = new Mailer;
+        $mail = new \Mailer;
         $view->reportMail = $mail->SendMail($e->getMessage());
         $view->display('Error', 'error');
+    }
+    catch (\E403Exeption $e) {
+        $view = new \View();
+        $view->error = 'Error 403. Forbidden';
+        $view->exeption = 'PDOException';
+
+        $error = new \LogsError();
+        $error->recordErrorLog($e->getMessage());
+
+        $mail = new \Mailer;
+        $view->reportMail = $mail->SendMail($e->getMessage());
+        $view->display('Error', 'error');
+        die;
     }
 
 
