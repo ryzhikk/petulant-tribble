@@ -30,7 +30,7 @@
         {
             $class = get_called_class();
             $sql = "SELECT * FROM " . static::$sqlTable;
-            $db = new DB();
+            $db = new \DB();
             $db->SetClassName($class);
             return $db->Query($sql);
         }
@@ -39,7 +39,7 @@
         {
             $class = get_called_class();
             $sql = "SELECT * FROM " . static::$sqlTable . " WHERE id=:id";
-            $db = new DB();
+            $db = new \DB();
             $db->SetClassName($class);
             return $db->Query($sql, [':id' => $this->id])[0];
         }
@@ -48,7 +48,7 @@
         {
             $class = get_called_class();
             $sql = "SELECT * FROM " . static::$sqlTable . " WHERE " . $column . "=:value";
-            $db = new DB();
+            $db = new \DB();
             #var_dump([':' . $column => $value]); die;
             $db->SetClassName($class);
             return $db->Query($sql, [':value' => $value]);
@@ -71,7 +71,7 @@
                 $data[':' . $col] = $this->data[$col];
             }
 
-            $query = new DB();
+            $query = new \DB();
             $sql =
                 "INSERT INTO " . static::$sqlTable . "
                 (" . implode(', ', $cols) . ")
@@ -133,7 +133,7 @@
                 " WHERE id='" . $this->id . "'";
             #var_dump($sql); die;
 
-            $query = new DB ();
+            $query = new \DB ();
             return $query->Execute($sql, $valuesOfFields);
             #var_dump($this->data);
         }
@@ -153,7 +153,7 @@
         public function Delete()
         {
             $sql = "DELETE FROM " . static::$sqlTable . " WHERE id=:id";
-            $query = new DB ();
+            $query = new \DB ();
             #var_dump($this->id); die;
             return $query->Execute($sql, [':id' => $this->id]);
         }
